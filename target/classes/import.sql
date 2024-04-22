@@ -1,6 +1,3 @@
-INSERT INTO users (username,password,token) values("prueba","prueba123","prueba");
-
-
 
 
 
