@@ -1,5 +1,11 @@
-FROM amazoncorretto:11-alpine-jdk
+FROM eclipse-temurin:11-alpine
 
-COPY target/demo-0.0.1-SNAPSHOT.jar app.jar
+RUN mkdir /app
 
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+WORKDIR /app
+
+COPY target/demo-0.0.1-SNAPSHOT.jar /app/app.jar
+
+EXPOSE 8080
+
+CMD java -jar app.jar
