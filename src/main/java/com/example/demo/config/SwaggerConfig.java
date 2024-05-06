@@ -24,7 +24,7 @@ public class SwaggerConfig{
         contact.setUrl("https://my-awesome-api.com");
 
         Server localServer = new Server();
-        localServer.setUrl("http://localhost:8000");
+        localServer.setUrl("http://localhost:8080");
         localServer.setDescription("Server URL in Local environment");
 
         Server productionServer = new Server();
