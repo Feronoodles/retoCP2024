@@ -37,7 +37,7 @@ public class Order {
     {
         this.productId = order.getProduct_id();
         this.cantidad = order.getCantidad();
-        this.client = order.getClient();
+        this.client = new Client(order.getDtoClient());
         this.status = true;
     }
 
