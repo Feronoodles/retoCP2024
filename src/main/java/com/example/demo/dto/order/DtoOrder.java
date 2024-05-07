@@ -1,5 +1,6 @@
 package com.example.demo.dto.order;
 
+import com.example.demo.dto.client.DtoClient;
 import com.example.demo.entities.Client;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,5 +24,5 @@ public class DtoOrder {
     @Positive
     private int cantidad;
     @NotNull
-    private Client client;
+    private DtoClient dtoClient;
 }
