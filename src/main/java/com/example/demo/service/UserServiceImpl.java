@@ -39,7 +39,7 @@ public class UserServiceImpl implements IUserService{
 
     @Override
     public User findUser(String encode) {
-        Long userId = Long.parseLong(tokenService.decodeToken(encode)[0]);
+        Long userId = Long.parseLong(tokenService.decodeToken(encode)[1]);
 
         return userRepository.getReferenceById(userId);
     }

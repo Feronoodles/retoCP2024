@@ -85,8 +85,8 @@ public class TokenService {
         String[] bodyParts = payloadJson.replace('}',' ').trim().split(",");
 
         userDecode[0]= returnUsername(bodyParts[3]);
-        userDecode[1]= returnUserId(bodyParts[1]);
 
+        userDecode[1]= returnUserId(bodyParts[1]);
         return userDecode;
     }
     public String returnUsername(String correo)

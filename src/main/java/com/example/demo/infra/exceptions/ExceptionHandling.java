@@ -11,14 +11,18 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver;
 
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.PersistenceException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 @RestControllerAdvice
 public class ExceptionHandling {
     @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity exception404(){ return ResponseEntity.notFound().build(); }
+    public ResponseEntity exception404(){
+        return ResponseEntity.notFound().build();
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity exception400(MethodArgumentNotValidException e){
@@ -61,5 +65,6 @@ public class ExceptionHandling {
     {
         return ResponseEntity.badRequest().body(e.getMessage());
     }
+
 
 }
