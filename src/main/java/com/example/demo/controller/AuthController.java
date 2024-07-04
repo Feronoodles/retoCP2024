@@ -9,17 +9,22 @@ import com.example.demo.infra.security.DataJWT;
 import com.example.demo.infra.security.TokenService;
 import com.example.demo.service.IUserService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
 
@@ -73,10 +78,14 @@ public class AuthController {
 
         return ResponseEntity.created(url).body(dtoUserView);
     }
+    @Parameters(
+
+    )
     @Operation(summary = "Obtener usuario", responses = {
             @ApiResponse(description = "Successful Operation", responseCode = "200", content = @Content(mediaType = "application/json")),
             @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content),
             @ApiResponse(responseCode = "404", description = "Not found", content = @Content) })
+    @SecurityRequirement(name = "bearer-key")
     @GetMapping("/get_user")
     public ResponseEntity<DtoUserView> getUser(@RequestHeader(value = "Authorization",required = false) String encoding)
     {
